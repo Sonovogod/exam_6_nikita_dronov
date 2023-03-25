@@ -31,9 +31,9 @@ public class ViewFullInfoTaskController : BaseController
             var tasks = _taskService.GetAll();
             TaskViewModel? task = tasks.Result.Find(x => x.Id == header["Id"]);
             ResponseDto<TaskViewModel> foundedTask = new ResponseDto<TaskViewModel>() { Result = task};
-            
+            var query = context.Request.QueryString;
             string content = _htmlBuilder.BuildHtml(fileName, filePath, foundedTask);
-            
+
             return Encoding.UTF8.GetBytes(content);
         }
 

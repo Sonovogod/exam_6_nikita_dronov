@@ -32,7 +32,16 @@
                                     <td>@task.Executor</td>
                                     <td>@task.DateOfCreate</td>
                                     <td>@task.Status</td>
-                                    <td>Тут будут кнопки</td>
+                                    <td>
+                                        <div class="row align-items-start">
+                                            <div class="col">
+                                                <a href="index.html?Id=@task.Id&State=done" class="btn btn-success">Выполнить</a>
+                                            </div>
+                                            <div class="col">
+                                                <a href="index.html?Id=@task.Id&State=delete" class="btn btn-danger">Удалить</a>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 }
                                 </tbody>

@@ -60,4 +60,20 @@ public class TaskService
         jsonString = JsonSerializer.Serialize(tasks);
         _fileManager.SaveData(jsonString, _pathToJson);
     }
+    
+    public void Save(TaskViewModel taskViewModel)
+    {
+        var jsonString = _fileManager.GetContent(_pathToJson);
+        List<Task>? tasks = JsonSerializer.Deserialize<List<Task>>(jsonString);
+
+        var task = tasks.Find(x => x.Id == taskViewModel.Id);
+        task.Description = taskViewModel.Description;
+        task.Executor = taskViewModel.Executor;
+        task.Status = taskViewModel.Status;
+        task.Title = taskViewModel.Title;
+        task.DateOfDone = taskViewModel.DateOfDone;
+    
+        jsonString = JsonSerializer.Serialize(tasks);
+        _fileManager.SaveData(jsonString, _pathToJson);
+    }
 }

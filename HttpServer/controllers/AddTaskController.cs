@@ -31,6 +31,25 @@ public class AddTaskController : BaseController
         {
             ResponseDto<List<TaskViewModel>> response = _taskService.GetAll();
             string content = _htmlBuilder.BuildHtml(fileName, filePath, response);
+            var query = context.Request.QueryString;
+
+            if (query.HasKeys())
+            {
+                var id = query["Id"];
+                TaskViewModel? task = response.Result.Find(x => x.Id == id);
+                
+                if (query["State"].Equals("delete"))
+                {
+                    task.Status = "delete";
+                }
+                if (query["State"].Equals("done"))
+                {
+                    task.Status = "done";
+                }
+                
+                _taskService.Save(task);
+                content = _htmlBuilder.BuildHtml("index.html", filePath, response);
+            }
             if (response.Result.Any())
                 return Encoding.UTF8.GetBytes(content);
             

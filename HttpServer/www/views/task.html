@@ -12,7 +12,14 @@ Layout="layout";
                 Дата выполнения: @Model.Result.DateOfDone
             </div>
             <div class="col-6 border border-info-subtle">
-                Тут будут кнопки
+                <div class="row align-items-start">
+                    <div class="col">
+                        <a href="task.html?Id=@Model.Result.Id&State=done" class="btn btn-success">Выполнить</a>
+                    </div>
+                    <div class="col">
+                        <a href="task.html?Id=@Model.Result.Id&State=delete" class="btn btn-danger">Удалить</a>
+                    </div>
+                </div>
                 <h2>Описание задачи</h2>
             </div>
             <div class="col-9 bg-info bg-opacity-10 border border-info border-start-1 rounded-end">@Model.Result.Description</div>       
