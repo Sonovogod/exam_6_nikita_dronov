@@ -36,29 +36,7 @@ public class ViewFullInfoTaskController : BaseController
 
             return Encoding.UTF8.GetBytes(content);
         }
-
-        if (fileName.Contains("task.html") && context.Request.HttpMethod.Equals("POST"))
-        {
-            /*if (context.Request.HasEntityBody)
-            {
-                using StreamReader streamReader = new StreamReader(context.Request.InputStream, Encoding.UTF8);
-                var body = streamReader.ReadToEnd();
-                NameValueCollection nameValueCollection = HttpUtility.ParseQueryString(body);
-                TaskViewModel employeeViewModel = new TaskViewModel
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Title = nameValueCollection["Title"],
-                    Executor = nameValueCollection["Executor"],
-                    Status = "new",
-                    Description = nameValueCollection["Description"],
-                    DateOfCreate = DateTime.Now,
-                    DateOfDone = null
-                };
-                
-                string content = Post(employeeViewModel, fileName, filePath);
-                return Encoding.UTF8.GetBytes(content);
-            }*/
-        }
+        
         
         if (Controller is not null) 
             return Controller.TryToProcessRequest(context, fileName);
