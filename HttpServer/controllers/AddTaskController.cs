@@ -44,10 +44,10 @@ public class AddTaskController : BaseController
                 NameValueCollection nameValueCollection = HttpUtility.ParseQueryString(body);
                 TaskViewModel employeeViewModel = new TaskViewModel
                 {
-                    Id = new Guid().ToString(),
+                    Id = Guid.NewGuid().ToString(),
                     Title = nameValueCollection["Title"],
                     Executor = nameValueCollection["Executor"],
-                    Status = nameValueCollection["Status"],
+                    Status = "new",
                     Description = nameValueCollection["Description"],
                     DateOfCreate = DateTime.Now,
                     DateOfDone = null

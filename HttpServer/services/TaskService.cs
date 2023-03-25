@@ -15,7 +15,7 @@ public class TaskService
     public TaskService(FileManager fileManager)
     {
         _fileManager = fileManager;
-        _pathToJson = $"{RootDirectoryProvider.GetRootDirectoryPath()}/data/task.json";
+        _pathToJson = $"{RootDirectoryProvider.GetRootDirectoryPath()}/data/tasks.json";
     }
 
     public ResponseDto<List<TaskViewModel>> GetAll()

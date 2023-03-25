@@ -19,22 +19,21 @@ AddressConnectionProvider.Port = 8000;
 AddressConnectionProvider.Address = AddressConnectionProvider.RootDomain + AddressConnectionProvider.Port + "/";
 
 var commonHtmlBuilder = new HtmlBuilderService<ResponseDto<IndexViewModel>>();
-var employeeHtmlBuilder = new HtmlBuilderService<ResponseDto<List<TaskViewModel>>>();
-var employeeService = new TaskService(fileManager);
+var taskHtmlBuilder = new HtmlBuilderService<ResponseDto<List<TaskViewModel>>>();
+var taskService = new TaskService(fileManager);
 
-var createEmployeeValidator = new CreateTaskValidator();
+var createTaskValidator = new CreateTaskValidator();
 
 
 var imageController = new ImageController(fileManager);
-var homeController = new HomeController(employeeService, employeeHtmlBuilder);
+var homeController = new HomeController(taskService, taskHtmlBuilder);
 var serviceController = new ServiceController(fileManager);
-var addEmployeeController = new AddTaskController(employeeHtmlBuilder, createEmployeeValidator, employeeService);
+var addTaskController = new AddTaskController(taskHtmlBuilder, createTaskValidator, taskService);
 
-
+addTaskController.Controller = homeController;
 homeController.Controller = imageController;
 imageController.Controller = serviceController;
-serviceController.Controller = addEmployeeController;
 
-Server server = new Server(listener, homeController);
+Server server = new Server(listener, addTaskController);
 
 server.Start();

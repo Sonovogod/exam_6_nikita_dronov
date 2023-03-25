@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="www\data\task.json">
+      <None Update="www\data\tasks.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="www\css\styles.css">
