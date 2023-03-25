@@ -1,0 +1,21 @@
+﻿@{
+Layout="layout";
+}
+
+<div class="wrapper text-center">
+    <h1 class="text-start">Задача: @Model.Result.Title</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-3 border border-info-subtle text-start">
+                Исполнитель: @Model.Result.Executor<br>
+                Дата создания: @Model.Result.DateOfCreate<br>
+                Дата выполнения: @Model.Result.DateOfDone
+            </div>
+            <div class="col-6 border border-info-subtle">
+                Тут будут кнопки
+                <h2>Описание задачи</h2>
+            </div>
+            <div class="col-9 bg-info bg-opacity-10 border border-info border-start-1 rounded-end">@Model.Result.Description</div>       
+        </div>
+    </div>
+</div>

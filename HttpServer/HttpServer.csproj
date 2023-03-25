@@ -24,6 +24,9 @@
       <None Update="www\favicon.ico">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="www\views\task.html">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

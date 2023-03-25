@@ -21,11 +21,14 @@
                                 </tr>
                                 </thead>
                                 <tbody class="table-group-divider">
+                                @{int counter = 0;}
                                 @foreach (var task in Model.Result)
                                 { 
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>@task.Title</td>
+                                    <th scope="row">@{counter = counter + 1;}</th>
+                                    <td>
+                                        <a href="task.html?Id=@task.Id">@task.Title</a>
+                                    </td>
                                     <td>@task.Executor</td>
                                     <td>@task.DateOfCreate</td>
                                     <td>@task.Status</td>

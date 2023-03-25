@@ -29,6 +29,11 @@ public class AddTaskController : BaseController
         
         if (fileName.Contains("index.html") && context.Request.HttpMethod.Equals("GET"))
         {
+            ResponseDto<List<TaskViewModel>> response = _taskService.GetAll();
+            string content = _htmlBuilder.BuildHtml(fileName, filePath, response);
+            if (response.Result.Any())
+                return Encoding.UTF8.GetBytes(content);
+            
             ResponseDto<List<TaskViewModel>> responseDto = new ResponseDto<List<TaskViewModel>> {Result = new List<TaskViewModel>()};
             var htmlString = _htmlBuilder.BuildHtml(fileName,filePath, responseDto);
             
