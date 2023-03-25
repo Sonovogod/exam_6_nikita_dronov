@@ -44,8 +44,8 @@ public class TaskService
     public void Create(TaskViewModel taskViewModel)
     {
         var jsonString = _fileManager.GetContent(_pathToJson);
-        var tasks = JsonSerializer.Deserialize<List<Task>>(jsonString);
-        Task newEmployee = new Task()
+        List<Task>? tasks = JsonSerializer.Deserialize<List<Task>>(jsonString);
+        Task newTask = new Task()
         {
             Id = taskViewModel.Id,
             Title = taskViewModel.Title,
@@ -56,8 +56,8 @@ public class TaskService
             DateOfDone = taskViewModel.DateOfDone
         };
 
-        tasks?.Add(newEmployee);
-        jsonString = JsonSerializer.Serialize(newEmployee);
+        tasks?.Add(newTask);
+        jsonString = JsonSerializer.Serialize(tasks);
         _fileManager.SaveData(jsonString, _pathToJson);
     }
 }

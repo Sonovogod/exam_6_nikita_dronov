@@ -48,7 +48,7 @@ public class Server
                 var handler = new Sender(_context);
                 handler.Send(result, endpoint);
             }
-            catch (Exception e)
+            catch (Exception e)  
             {
                 Console.WriteLine(e.Message);
                 _context.Response.StatusCode = (int)HttpStatusCode.NotFound;

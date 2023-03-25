@@ -21,15 +21,14 @@
                                 </tr>
                                 </thead>
                                 <tbody class="table-group-divider">
-                                foreach (var task in Model.Result)
-                                {
+                                @foreach (var task in Model.Result)
+                                { 
                                 <tr>
                                     <th scope="row">1</th>
-                                    <td>task.Id</td>
-                                    <td>task.Title</td>
-                                    <td>task.Executor</td>
-                                    <td>task.DateOfCreate</td>
-                                    <td>task.Status</td>
+                                    <td>@task.Title</td>
+                                    <td>@task.Executor</td>
+                                    <td>@task.DateOfCreate</td>
+                                    <td>@task.Status</td>
                                     <td>Тут будут кнопки</td>
                                 </tr>
                                 }
